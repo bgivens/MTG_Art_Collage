@@ -3,7 +3,10 @@ import requests
 import os
 
 original_directory = os.getcwd()
-#Need to make /card_set_info if it doesn't exist
+
+if os.path.isdir(original_directory + "/card_set_info") is False:
+    os.mkdir("card_set_info")
+
 os.chdir(original_directory+"/card_set_info")
 
 mtg_set_list = requests.get("https://api.scryfall.com/sets").json()
